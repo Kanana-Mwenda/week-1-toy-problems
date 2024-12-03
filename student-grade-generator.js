@@ -23,9 +23,9 @@ function generateStudentGrade(mark){
     }
 }
 // Return the grade
-let grade= generateStudentGrade(mark){
+let grade= generateStudentGrade(mark) 
     console.log( `The student grade is ${grade}`);
-}
+
 //call the function
 generateStudentGrade();
 
