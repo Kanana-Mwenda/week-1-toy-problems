@@ -18,5 +18,3 @@ if (demeritPoints > maxDemeritPoints){
     console.log("License suspended");
 }
 }
-
-c

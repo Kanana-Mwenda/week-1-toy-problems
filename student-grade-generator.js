@@ -1,31 +1,47 @@
-function generateStudentGrade(mark){
+// create interface
+const readline = require ('readline');
 
-//prompt user to enter student mark
-    let mark =parseFloat(prompt('Enter student marks (between 0 and 100):'));
+const rl= readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-// check if input is a valid number and in the range
-    if (isNaN(mark) || mark < 0 || mark > 100) { 
-      return  'Invalid input. Please enter a number between 0 and 100.';
-    }
+    // determine grade from input mark
+    function getGrade(mark){
 
-    // determine grade from input marks
-    let grade;
-    if (mark>79) {
+    if ( mark>79) {
         return 'A';
-    }else if (mark >= 60){
+    }else if (mark >= 60 && mark <= 79){
         return 'B';
-    }else if (mark >= 50){
+    }else if (mark >= 49 && mark <= 59){
         return 'C';
-    }else if (mark>=40){
+    }else if (mark>=40 && mark <=48){
         return 'D';
     }else{
         return 'E';
     }
-}
-// Return the grade
-let grade= generateStudentGrade(mark) 
-    console.log( `The student grade is ${grade}`);
+    }
+    function getInput() {
 
-//call the function
-generateStudentGrade();
+        // enter the marks
+        rl.question("Enter student's marks between 0 and 100:",(mark) =>{
+            mark = parseInt(mark);
+        
+            //validate user input
+            if (isNaN(mark) || mark<0 || mark> 100){
+                console.log('Please enter a number between 0 and 100.');
+
+                getInput();
+
+
+        }else {
+            const grade = getGrade(mark);
+            console.log(`Student's grade is ${grade}`);
+            rl.close();
+        }
+    });
+}
+
+getInput();
+
 
